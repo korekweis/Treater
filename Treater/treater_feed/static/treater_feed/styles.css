@@ -1,0 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.layout .row.home-not-authenticated {
+    height: 780px;
+}
+
+.layout .row.home-not-authenticated .col-sm-6.with-image {
+    background-image: url("images/food.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.layout .row.home-not-authenticated .col-sm-6.sign {
+    padding-left: 50px;
+}
+
+.layout .row.home-not-authenticated .col-sm-6.sign h1 {
+    margin-top: 35%;
+    font-size: 80px;
+}
+
+.layout .row.home-not-authenticated .col-sm-6.sign h2 {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 40px;
+}
+
+.layout .row.home-not-authenticated .col-sm-6.sign .btn {
+    width: 60%;
+    font-size: 18px;
+    height: 45px;
+    font-weight: bold;
+}
+
+.layout .row.home-not-authenticated .col-sm-6.sign .btn.btn-warning {
+    color: white;
+}
+
+.layout .row.home-not-authenticated .col-sm-6.sign .btn.btn-light {
+    margin-top: 15px;
+    border-color: #ffc008;
+    color: #ffc008;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.modal-body p {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.modal-header {
+    font-size: 30px;
+    color: #ffc008;
+    text-align: center;
+}
+
+.modal-body .form-control {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.modal-body .btn {
+    margin-top: 10px;
+    float: right;
+    width: 100%;
+}
+
+.row.home-not-authenticated .modal-body form input[name="username"]:focus,
+#createAccountModal .modal-body form input[name="email"]:focus,
+.row.home-not-authenticated .modal-body form input[name="password"]:focus,
+#createAccountModal .modal-body form input[name="confirmation"]:focus {
+    border-color: #ffc008;
+    box-shadow: 0 1px 1px rgba(236, 206, 35, 0.075);
+}
+
+.modal-body form .btn-primary {
+    background-color: #ffc008;
+    border: none;
+}
+
+.copyright {
+    text-align: center;
+    color: grey;
+    font-weight: lighter;
+}

@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Treater{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'treater_feed/styles.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        {%if user.is_authenticated %}
+        <div>
+            <h1>hi</h1>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
+        {% else %}
+        <div class="container-fluid">
+            <div class="row home-not-authenticated">
+                <div class="col-sm-6 with-image">
+                </div>
+                <div class="col-sm-6 sign">
+                    <h1>What's Cooking?</h1>
+                    <h2>Join Treater now.</h2>
+                    <!--MODAL
+                    MODAL 1:
+                    -->
+                    <div class="modal" tabindex="-1" role="dialog" id="createAccountModal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <b class="treater_modal_header">Treater.</b>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Create your account</p>
+                                    <form action="{% url 'register' %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="email" name="email" placeholder="Email Address">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="password" name="password" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
+                                        </div>
+                                        <input class="btn btn-primary" type="submit" value="Register">
+                                        <button type="button" class="btn btn-light" data-dismiss="modal" id="closeCreateAccountModal">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--MODAL 2-->
+                    <div class="modal" tabindex="-1" role="dialog" id="logInModal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <b class="treater_modal_header">Treater.</b>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Log In</p>
+                                    <form action="{% url 'login' %}" method="post">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" type="password" name="password" placeholder="Password">
+                                        </div>
+                                        <input class="btn btn-primary" type="submit" value="Log In">
+                                        <button type="button" class="btn btn-light" data-dismiss="modal" id="closeLogInModal">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-warning" id="signUpModalBtn">Sign Up</button>
+                    <br>
+                    <button type="button" class="btn btn-light" id="logInModalBtn">Log In</button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div>
+            {% block body %} {% endblock %}
+        </div>
+        <div class="copyright">
+            <p>© 2021 Treater</p>
+        </div>
+    </div>
+</body>
+
+
+<script src="{% static 'treater_feed/layout.js' %}"></script>
