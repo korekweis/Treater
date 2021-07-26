@@ -7,14 +7,37 @@
     <title>{% block title %}Treater{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link href="{% static 'treater_feed/styles.css' %}" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-replace-svg="nest"></script>
 </head>
 
 <body>
     <div class="layout">
         {%if user.is_authenticated %}
-        <div>
-            <h1>hi</h1>
-            <a href="{% url 'logout' %}">Logout</a>
+        <div class="authenticated">
+            <div class="wrapper">
+                <div class="sidebar">
+                    <h1><b>TREATER.</b></h1>
+                    <ul>
+                        <a href="#">
+                            <li id="home-nav"><i class="fas fa-home"></i> Home</li>
+                        </a>
+                        <a href="#">
+                            <li id="profile-nav"><i class="fas fa-user-alt"></i> Profile</li>
+                        </a>
+                        <a href="{% url 'logout' %}">
+                            <li id="logout-nav"><i class="fas fa-sign-out-alt"></i> Logout</li>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="container main-content">
+                <div class="header">
+                    <h1>TESTING</h1>
+                </div>
+                <div class="copyright">
+                    <p>© 2021 Treater</p>
+                </div>
+            </div>
         </div>
         {% else %}
         <div class="container-fluid">
@@ -85,13 +108,13 @@
                     <button type="button" class="btn btn-light" id="logInModalBtn">Log In</button>
                 </div>
             </div>
+            <div class="copyright">
+                <p>© 2021 Treater</p>
+            </div>
             {% endif %}
         </div>
         <div>
             {% block body %} {% endblock %}
-        </div>
-        <div class="copyright">
-            <p>© 2021 Treater</p>
         </div>
     </div>
 </body>

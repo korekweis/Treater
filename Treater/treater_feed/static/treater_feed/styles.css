@@ -2,6 +2,73 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    text-decoration: none;
+}
+
+.authenticated {
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+.layout .authenticated .wrapper {
+    display: flex;
+    position: relative;
+}
+
+.authenticated .wrapper .sidebar {
+    padding-top: 20px;
+    position: fixed;
+    width: 380px;
+    height: 100%;
+    /*TODO!*/
+    border-width: thick;
+    border-color: grey;
+    background-color: #244763;
+}
+
+.authenticated .wrapper .sidebar h1 {
+    color: #ffc008;
+    margin-bottom: 20px;
+    margin-left: 80px;
+}
+
+.authenticated .wrapper .sidebar li {
+    list-style: none;
+    padding-left: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 60px;
+    margin-right: 100px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    border-top: 10px #152d40;
+    border-bottom: 1px #152d40;
+    border-radius: 25px;
+}
+
+.authenticated .wrapper .sidebar li:hover {
+    background-color: #ffd761;
+    color: #152d40;
+}
+
+.authenticated .wrapper .sidebar i {
+    margin-right: 15px;
+}
+
+.authenticated .wrapper .sidebar a {
+    color: white;
+}
+
+.authenticated .wrapper .sidebar a:hover {
+    text-decoration: none;
+    color: #152d40;
+}
+
+.layout .authenticated .container.main-content {
+    margin-left: 380px;
 }
 
 .layout .row.home-not-authenticated {

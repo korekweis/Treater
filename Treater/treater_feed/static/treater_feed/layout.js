@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('createAccountModal').style.display = 'none';
     document.getElementById('signUpModalBtn').addEventListener('click', () => load_registerModal());
     document.getElementById('closeCreateAccountModal').addEventListener('click', () => load_registerModal());
 
