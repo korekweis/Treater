@@ -50,3 +50,21 @@ def login_view(request):
 def logout_view(request): 
     logout(request)
     return HttpResponseRedirect(reverse("index"))
+
+@login_required
+def home(request):   
+    user = User.objects.get(username=request.user)
+    return render(request, "treater_feed/feed.html", {
+        "tweets": Tweet.objects.all().order_by('-id')
+    })
+
+@login_required
+def add_tweet(request):
+    if request.method == 'POST':
+        user = User.objects.get(username=request.user)
+        #if no input try to disable tweet button
+        tweet_input = request.POST["tweet"]
+        tweet = Tweet.objects.create(user=user, tweet=tweet_input)
+        tweet.save()
+        return HttpResponseRedirect(reverse("home"))
+ 

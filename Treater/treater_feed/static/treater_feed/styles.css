@@ -22,9 +22,9 @@
     width: 380px;
     height: 100%;
     /*TODO!*/
-    border-width: thick;
-    border-color: grey;
-    background-color: #244763;
+    border-right: 1px solid #dedede;
+    /*background-color: #244763;*/
+    background-color: white;
 }
 
 .authenticated .wrapper .sidebar h1 {
@@ -52,6 +52,8 @@
 .authenticated .wrapper .sidebar li:hover {
     background-color: #ffd761;
     color: #152d40;
+    /*background-color: #152d40;
+    color: #ffd761;*/
 }
 
 .authenticated .wrapper .sidebar i {
@@ -59,12 +61,11 @@
 }
 
 .authenticated .wrapper .sidebar a {
-    color: white;
+    color: #152d40;
 }
 
 .authenticated .wrapper .sidebar a:hover {
     text-decoration: none;
-    color: #152d40;
 }
 
 .layout .authenticated .container.main-content {
@@ -73,6 +74,10 @@
 
 .layout .row.home-not-authenticated {
     height: 780px;
+}
+
+.layout .authenticated .body-authenticated {
+    margin-right: 70px;
 }
 
 .layout .row.home-not-authenticated .col-sm-6.with-image {
@@ -150,6 +155,37 @@
 .modal-body form .btn-primary {
     background-color: #ffc008;
     border: none;
+}
+
+.container.treater_feed {
+    width: 80%;
+}
+
+.container.feed .home-title {
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.container.feed .form-group.text-area textarea {
+    border: 1px solid #dedede;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    resize: none;
+}
+
+.container.feed .form-group.text-area textarea:focus {
+    outline: none !important;
+    border: 1px solid #dedede;
+    box-shadow: 0 0 10px #ffc008;
+}
+
+.container.feed .btn.btn-warning {
+    float: right;
+}
+
+.container.list-tweets {
+    overflow: hidden;
 }
 
 .copyright {

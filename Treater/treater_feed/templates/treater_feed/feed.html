@@ -1,1 +1,26 @@
-{% extends "treater_feed/layout.html" %} {% block body %} {% endblock %}
+{% extends "treater_feed/layout.html" %} {% block authenticated_body %}
+
+<div class="container treater_feed">
+    <div class="container feed">
+        <form action="{% url 'add_tweet' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group text-area">
+                <label class="home-title" for="tweet-text-area">Home</label>
+                <textarea class="form-control" name="tweet" id="tweet-text-area" rows="3" placeholder="What's cooking?"></textarea>
+            </div>
+            <input class="btn btn-warning" type="submit" value="Register">
+        </form>
+    </div>
+    <div class="container list-tweets">
+        <ul>
+            {% for tweet in tweets %}
+            <li>
+                <h3>{{tweet.user}}</h3>
+                <h4> {{tweet.tweet}} </h4>
+                <p>{{tweet.date_and_time}}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

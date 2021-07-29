@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('logInModal').style.display = 'none';
     document.getElementById('logInModalBtn').addEventListener('click', () => load_logInModal());
     document.getElementById('closeLogInModal').addEventListener('click', () => load_logInModal());
+
+    document.getElementById('tweet-text-area').addEventListener('click', () => load_tweetTextArea());
 });
 
 function load_registerModal() {
@@ -23,4 +25,8 @@ function load_logInModal() {
     } else {
         document.getElementById('logInModal').style.display = 'none';
     }
+}
+
+function load_tweetTextArea() {
+    document.getElementById('tweet-text-area').style.borderBottom = "1px solid #dedede";
 }

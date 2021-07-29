@@ -18,7 +18,7 @@
                 <div class="sidebar">
                     <h1><b>TREATER.</b></h1>
                     <ul>
-                        <a href="#">
+                        <a href="{% url 'home' %}">
                             <li id="home-nav"><i class="fas fa-home"></i> Home</li>
                         </a>
                         <a href="#">
@@ -31,8 +31,8 @@
                 </div>
             </div>
             <div class="container main-content">
-                <div class="header">
-                    <h1>TESTING</h1>
+                <div class="body-authenticated">
+                    {% block authenticated_body %} {% endblock %}
                 </div>
                 <div class="copyright">
                     <p>© 2021 Treater</p>
