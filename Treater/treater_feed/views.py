@@ -68,3 +68,6 @@ def add_tweet(request):
         tweet.save()
         return HttpResponseRedirect(reverse("home"))
  
+@login_required
+def view_profile(request):
+    return render(request, "treater_feed/index.html")

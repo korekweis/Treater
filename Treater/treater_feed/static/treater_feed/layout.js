@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('logInModalBtn').addEventListener('click', () => load_logInModal());
     document.getElementById('closeLogInModal').addEventListener('click', () => load_logInModal());
 
-    document.getElementById('tweet-text-area').addEventListener('click', () => load_tweetTextArea());
+    document.getElementById('treat-button').addEventListener('click', () => load_tweetTextArea());
+    document.getElementById('tweet-text-area').addEventListener('keyup', (e) => can_tweet());
 });
 
 function load_registerModal() {
@@ -28,5 +29,16 @@ function load_logInModal() {
 }
 
 function load_tweetTextArea() {
+    console.log("inside load_tweet");
     document.getElementById('tweet-text-area').style.borderBottom = "1px solid #dedede";
+}
+
+function can_tweet(e) {
+    console.log("inside");
+    let text_area = e.currentTarget.value;
+    if (text_area === "") {
+        document.getElementById('treat-button').disabled = true;
+    } else {
+        document.getElementById('treat-button').disabled = false;
+    }
 }

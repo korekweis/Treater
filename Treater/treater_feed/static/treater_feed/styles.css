@@ -184,8 +184,18 @@
     float: right;
 }
 
+.container.treater_feed .container.list-tweets ul {
+    list-style: none;
+}
+
 .container.list-tweets {
+    margin-top: 100px;
     overflow: hidden;
+}
+
+.container.list-tweets .tweet-date-time {
+    margin-left: 5px;
+    color: grey;
 }
 
 .copyright {
