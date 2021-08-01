@@ -1,41 +1,39 @@
-{% extends "treater_feed/feed.html" %} {% block authenticated_body %} {% load static %}
-<div class="container treater_feed">
-    {% block top_feed %}
-    <div class="container profile-details">
-        <div class="row username-button">
-            <div>
-                <h3 class="profile-details-username"><b>{{user.username}}</b></h3>
+{% extends "treater_feed/feed.html" %} {% load static %} {% block top_feed %}
+<div class="container profile-details">
+    <div class="modal" tabindex="-1" role="dialog" id="editProfileModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <b class="edit-profile-header">Edit Profile</b>
+                </div>
+                <div class="modal-body">
+                    <p>Create your account</p>
+                    <button type="button" class="btn btn-warning" data-dismiss="modal" id="saveEditProfileBtn">Edit Profile</button>
+                    <form action="#" method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="description">Bio</label>
+                            <input id="description" type="text" value="" name="description">
+                        </div>
+                        <input class="btn btn-primary" type="submit" value="Save" id="saveEditProfileBtn-hidden">
+                    </form>
+                </div>
             </div>
-            <button type="button" class="btn btn-warning" id="edit-profile-button">Edit Profile</button>
-        </div>
-        <div class="row">
-            <p>{{tweets.count}} Treats</p>
-        </div>
-        <div class="row">
-            <div>{{user.description}}</div>
         </div>
     </div>
-    {% endblock %}
-    <div class="container list-tweets">
-        <ul>
-            {% for tweet in tweets %}
-            <li>
-                <div class="tweet-post">
-                    <div class="row">
-                        <a href="{% url 'view_user_profile' tweet.user.id %}">
-                            <b>{{tweet.user}}</b>
-                        </a>
-                        <p class="tweet-date-time"> &#183; {{tweet.date_and_time|date:"d M"}} {{tweet.date_and_time|time:"TIME_FORMAT"}}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    {{tweet.tweet}}
-                </div>
-            </li>
-            <hr> {% endfor %}
-        </ul>
+    <div class="row username-button">
+        <div>
+            <h3 class="profile-details-username"><b>{{user.username}}</b></h3>
+        </div>
+        <div>
+            <button type="button" class="btn btn-warning" id="editProfileBtn">Edit Profile</button>
+        </div>
+    </div>
+    <div class="row">
+        <p>{{tweets.count}} Treats</p>
+    </div>
+    <div class="row">
+        <div>{{user.description}}</div>
     </div>
 </div>
-{% endblock %} {% block script %}
-<script src="{% static 'treater_feed/feed.js' %}"></script>
 {% endblock %}
