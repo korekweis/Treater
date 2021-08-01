@@ -28,7 +28,9 @@ def register(request):
         #         "message": "Username already taken."
         #     }
         login(request, user)
-        return render(request, "treater_feed/feed.html")
+        return render(request, "treater_feed/feed.html" , {
+                "tweets": Tweet.objects.all().order_by('-id')
+            })
     else: 
         return render(request, "treater_feed/index.html")
 
@@ -41,7 +43,9 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return render(request, "treater_feed/feed.html")
+            return render(request, "treater_feed/feed.html", {
+                "tweets": Tweet.objects.all().order_by('-id')
+            })
         else: 
             return HttpResponseRedirect(reverse("index"))
     else: 
@@ -69,5 +73,17 @@ def add_tweet(request):
         return HttpResponseRedirect(reverse("home"))
  
 @login_required
-def view_profile(request):
-    return render(request, "treater_feed/index.html")
+def view_own_profile(request):
+    user = User.objects.get(username=request.user)
+    print(user)
+    return render(request, "treater_feed/profile.html", {
+        "tweets": user.tweet_user.all()
+    })
+
+@login_required
+def view_user_profile(request, user_id):
+    user = User.objects.get(pk=user_id)
+    return render(request, "treater_feed/feed.html", {
+        "user": user,
+        "tweets": user.tweet_user.all()
+    })

@@ -21,7 +21,7 @@
                         <a href="{% url 'home' %}">
                             <li id="home-nav"><i class="fas fa-home"></i> Home</li>
                         </a>
-                        <a href="#">
+                        <a href="{% url 'view_own_profile' %}">
                             <li id="profile-nav"><i class="fas fa-user-alt"></i> Profile</li>
                         </a>
                         <a href="{% url 'logout' %}">
@@ -119,4 +119,6 @@
     </div>
 </body>
 
+{% block script %}
 <script src="{% static 'treater_feed/layout.js' %}"></script>
+{% endblock %}

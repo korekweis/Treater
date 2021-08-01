@@ -198,6 +198,17 @@
     color: grey;
 }
 
+.container.profile-details h3 {
+    margin-top: 30px;
+}
+
+.container.profile-details button {
+    height: 40px;
+    border-radius: 30px;
+    margin-top: 30px;
+    float: right;
+}
+
 .copyright {
     text-align: center;
     color: grey;
