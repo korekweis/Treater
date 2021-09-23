@@ -10,8 +10,3 @@ python manage.py migrate
 
 To run: 
 python manage.py runserver
-
-superuser: 
-username: korekweis 
-email: korekweis@gmail.com
-pw: kweis1225
