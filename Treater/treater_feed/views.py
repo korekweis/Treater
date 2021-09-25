@@ -59,7 +59,8 @@ def logout_view(request):
 def home(request):   
     user = User.objects.get(username=request.user)
     return render(request, "treater_feed/feed.html", {
-        "tweets": Tweet.objects.all().order_by('-id')
+        "tweets": Tweet.objects.all().order_by('-date_and_time'),
+        "user": user
     })
 
 @login_required
@@ -75,15 +76,38 @@ def add_tweet(request):
 @login_required
 def view_own_profile(request):
     user = User.objects.get(username=request.user)
-    print(user)
-    return render(request, "treater_feed/profile.html", {
-        "tweets": user.tweet_user.all()
-    })
+    if request.method == 'POST':
+        updated_description = request.POST["description-change"]
+        user.description = updated_description
+        user.save() 
+        user = User.objects.get(username=request.user)
+        return render(request, "treater_feed/profile.html", {
+            "user": user,
+            "profileUser": user,
+            "tweets": user.tweet_user.all().order_by('-date_and_time')
+        })
+    else: 
+        return render(request, "treater_feed/profile.html", {
+            "user": user,
+            "profileUser": user,
+            "tweets": user.tweet_user.all().order_by('-date_and_time')
+        })
 
 @login_required
 def view_user_profile(request, user_id):
-    user = User.objects.get(pk=user_id)
-    return render(request, "treater_feed/feed.html", {
-        "user": user,
-        "tweets": user.tweet_user.all()
+    profileUser = User.objects.get(pk=user_id)
+    return render(request, "treater_feed/profile.html", {
+        "profileUser": profileUser,
+        "tweets": profileUser.tweet_user.all().order_by('-date_and_time')
+    })
+
+@login_required
+def delete_tweet(request, tweet_id, user_id):
+    print("path: ", request.get_full_path)
+    profileUser = User.objects.get(pk=user_id)
+    tweet = Tweet.objects.get(pk=tweet_id)
+    tweet.delete()
+    return render(request, "treater_feed/profile.html", {
+        "profileUser": profileUser,
+        "tweets": profileUser.tweet_user.all().order_by('-date_and_time')
     })

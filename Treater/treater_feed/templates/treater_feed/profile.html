@@ -6,16 +6,15 @@
                 <div class="modal-header">
                     <b class="edit-profile-header">Edit Profile</b>
                 </div>
-                <div class="modal-body">
-                    <p>Create your account</p>
-                    <button type="button" class="btn btn-warning" data-dismiss="modal" id="saveEditProfileBtn">Edit Profile</button>
-                    <form action="#" method="post">
+                <div class="modal-body edit-Profile">
+                    <h4><b>@{{user.username}}</b></h4>
+                    <form action="{% url 'view_own_profile' %}" id="edit-profile-modal" method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="description">Bio</label>
-                            <input id="description" type="text" value="" name="description">
+                            <textarea id="description" name="description-change" class="form-control" name="description" rows="3" maxlength="250">{{user.description}}</textarea>
                         </div>
                         <input class="btn btn-primary" type="submit" value="Save" id="saveEditProfileBtn-hidden">
+                        <button type="button" class="btn btn-light" data-dismiss="modal" id="closeEditProfileBtn">Close</button>
                     </form>
                 </div>
             </div>
@@ -23,17 +22,21 @@
     </div>
     <div class="row username-button">
         <div>
-            <h3 class="profile-details-username"><b>{{user.username}}</b></h3>
+            <h3 class="profile-details-username"><b>{{profileUser.username}}</b></h3>
         </div>
+        {% if user.id == profileUser.id %}
         <div>
             <button type="button" class="btn btn-warning" id="editProfileBtn">Edit Profile</button>
         </div>
+        {% endif %}
     </div>
     <div class="row">
         <p>{{tweets.count}} Treats</p>
     </div>
     <div class="row">
-        <div>{{user.description}}</div>
+        <div>{{profileUser.description}}</div>
     </div>
 </div>
+{% endblock %} {% block script %}
+<script src="{% static 'treater_feed/profile.js' %}"></script>
 {% endblock %}

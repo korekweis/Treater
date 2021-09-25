@@ -162,6 +162,7 @@
 }
 
 .container.feed .home-title {
+    margin-top: 20px;
     font-weight: bold;
     font-size: 23px;
 }
@@ -193,8 +194,26 @@
     overflow: hidden;
 }
 
+.container.list-tweets a {
+    color: #ffc108d8;
+}
+
 .container.list-tweets .tweet-date-time {
     margin-left: 5px;
+    color: grey;
+}
+
+.container.list-tweets .btn.delete {
+    margin-top: -10px;
+}
+
+.container.list-tweets i {
+    align-self: left;
+    color: rgb(161, 161, 161);
+}
+
+.container.list-tweets i:hover {
+    align-self: left;
     color: grey;
 }
 
@@ -206,7 +225,11 @@
     height: 40px;
     border-radius: 30px;
     margin-top: 30px;
-    float: right;
+    margin-left: 20px;
+}
+
+.modal-body.edit-Profile .form-control {
+    height: 100px;
 }
 
 .copyright {

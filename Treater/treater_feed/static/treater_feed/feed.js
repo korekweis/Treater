@@ -2,9 +2,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('treat-button').addEventListener('click', () => load_tweetTextArea());
     document.getElementById('treat-button').disabled = true;
     document.getElementById('tweet-text-area').addEventListener('keyup', () => can_tweet());
-
-    document.getElementById('editProfileModal').style.display = 'none';
-    document.getElementById('editProfileBtn').addEventListener('click', () => edit_profile());
+    // document.getElementById('deleteConfirmModal').style.display = 'none';
+    // document.getElementById('deleteTweet').addEventListener('click', () => delete_tweet());
+    // document.getElementById('closeDeleteConfirm').addEventListener('click', () => delete_tweet());
+    // document.getElementById('saveDeleteConfirm').addEventListener('click', () => delete_tweet());
 });
 
 function load_tweetTextArea() {
@@ -21,12 +22,12 @@ function can_tweet(e) {
     }
 }
 
-function edit_profile() {
-    console.log("button heard");
-    let editProfileModal = document.getElementById('editProfileModal').style.display;
-    if (editProfileModal == 'none') {
-        document.getElementById('editProfileModal').style.display = 'block';
-    } else {
-        document.getElementById('editProfileModal').style.display = 'none';
-    }
-}
+// function delete_tweet() {
+//     console.log("INSIDE DELETE TWEET");
+//     let deleteConfirmModal = document.getElementById('deleteConfirmModal').style.display;
+//     if (deleteConfirmModal == 'none') {
+//         document.getElementById('deleteConfirmModal').style.display = 'block';
+//     } else {
+//         document.getElementById('deleteConfirmModal').style.display = 'none';
+//     }
+// }
