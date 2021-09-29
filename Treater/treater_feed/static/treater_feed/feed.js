@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('treat-button').addEventListener('click', () => load_tweetTextArea());
     document.getElementById('treat-button').disabled = true;
     document.getElementById('tweet-text-area').addEventListener('keyup', () => can_tweet());
-    // document.getElementById('deleteConfirmModal').style.display = 'none';
+    document.getElementById('deleteConfirmModal').style.display = 'none';
     // document.getElementById('deleteTweet').addEventListener('click', () => delete_tweet());
     // document.getElementById('closeDeleteConfirm').addEventListener('click', () => delete_tweet());
     // document.getElementById('saveDeleteConfirm').addEventListener('click', () => delete_tweet());

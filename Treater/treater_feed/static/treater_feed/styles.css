@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
@@ -185,7 +186,7 @@
     float: right;
 }
 
-.container.treater_feed .container.list-tweets ul {
+.container.list-tweets ul {
     list-style: none;
 }
 
@@ -217,6 +218,10 @@
     color: grey;
 }
 
+.container.profile-details {
+    padding-left: 100px;
+}
+
 .container.profile-details h3 {
     margin-top: 30px;
 }
@@ -230,6 +235,19 @@
 
 .modal-body.edit-Profile .form-control {
     height: 100px;
+}
+
+.container.error {
+    padding-top: 100px;
+    padding-right: 50px;
+    padding-left: 200px;
+    margin-top: 80px;
+}
+
+.error-message h1 {
+    color: grey;
+    font-size: 100px;
+    font-style: 'Georgia';
 }
 
 .copyright {

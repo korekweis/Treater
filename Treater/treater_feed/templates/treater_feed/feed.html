@@ -1,6 +1,5 @@
 {% extends "treater_feed/layout.html" %} {% block authenticated_body %} {% load static %}
 <div class="container treater_feed">
-    {% block top_feed %}
     <div class="container feed">
         <form action="{% url 'add_tweet' %}" method="post" id="tweet-form">
             {% csrf_token %}
@@ -12,7 +11,6 @@
 
         </form>
     </div>
-    {% endblock %}
     <div class="container list-tweets">
         <ul>
             {% for tweet in tweets %}
@@ -25,33 +23,12 @@
                         <p class="tweet-date-time"> &#183; {{tweet.date_and_time|date:"d M"}} {{tweet.date_and_time|time:"TIME_FORMAT"}}</p>
                     </div>
                 </div>
-                <!--MODAL
-                <div class="modal" tabindex="-1" role="dialog" id="deleteConfirmModal">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <b class="delete-confirm-header">Are you sure you want to delete this tweet?</b>
-                            </div>
-                            <div class="modal-body delete-confirm">
-                                <form>
-                                    {% csrf_token %}
-                                    <div class="form-group">
-                                        <p>{{tweet.tweet}}</p>
-                                    </div>
-                                    <input class="btn btn-primary" type="submit" value="Delete Tweet" id="saveDeleteConfirm">
-                                    <button type="button" class="btn btn-light" data-dismiss="modal" id="closeDeleteConfirm">Cancel</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                END OF MODAL-->
                 <div class="row">
                     <div class="col-sm-10">
                         {{tweet.tweet}}
                     </div>
                     {% if tweet.user.id == user.id %}
-                    <a class="btn delete" id="deleteTweet" href="{% url 'delete_tweet' tweet.id user.id %}"><i class="fas fa-times"></i></a> {% endif %}
+                    <a class="btn delete" id="deleteTweet" href="{% url 'delete_tweet_feed' tweet.id user.id %}"><i class="fas fa-times"></i></a> {% endif %}
                 </div>
             </li>
             <hr> {% endfor %}

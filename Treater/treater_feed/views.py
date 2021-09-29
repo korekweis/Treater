@@ -20,17 +20,21 @@ def register(request):
         confirmation = request.POST["confirmation"]
         # if password != confirmation:
         #     print("not the same") 
-        user = User.objects.create_user(username, email, password)
-        user.save()
-        # todo: check if the same username and update modal
-        # except IntegrityError:
-        #     return render(request, "auctions/register.html", {
-        #         "message": "Username already taken."
-        #     }
-        login(request, user)
-        return render(request, "treater_feed/feed.html" , {
-                "tweets": Tweet.objects.all().order_by('-id')
-            })
+        if (User.objects.filter(username=username).exists() or
+            User.objects.filter(email=email).exists() or password != confirmation): 
+            return render(request, "treater_feed/error.html")
+        else: 
+            user = User.objects.create_user(username, email, password)
+            user.save()
+            # todo: check if the same username and update modal
+            # except IntegrityError:
+            #     return render(request, "auctions/register.html", {
+            #         "message": "Username already taken."
+            #     }
+            login(request, user)
+            return render(request, "treater_feed/feed.html" , {
+                    "tweets": Tweet.objects.all().order_by('-date_and_time')
+                })
     else: 
         return render(request, "treater_feed/index.html")
 
@@ -44,7 +48,7 @@ def login_view(request):
         if user is not None:
             login(request, user)
             return render(request, "treater_feed/feed.html", {
-                "tweets": Tweet.objects.all().order_by('-id')
+                "tweets": Tweet.objects.all().order_by('-date_and_time')
             })
         else: 
             return HttpResponseRedirect(reverse("index"))
@@ -102,7 +106,18 @@ def view_user_profile(request, user_id):
     })
 
 @login_required
-def delete_tweet(request, tweet_id, user_id):
+def delete_tweet_feed(request, tweet_id, user_id):
+    print("path: ", request.get_full_path)
+    profileUser = User.objects.get(pk=user_id)
+    tweet = Tweet.objects.get(pk=tweet_id)
+    tweet.delete()
+    return render(request, "treater_feed/feed.html", {
+        "profileUser": profileUser,
+        "tweets": profileUser.tweet_user.all().order_by('-date_and_time')
+    })
+
+@login_required
+def delete_tweet_profile(request, tweet_id, user_id):
     print("path: ", request.get_full_path)
     profileUser = User.objects.get(pk=user_id)
     tweet = Tweet.objects.get(pk=tweet_id)

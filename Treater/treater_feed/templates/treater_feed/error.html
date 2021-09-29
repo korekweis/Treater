@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}Treater{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="{% static 'treater_feed/styles.css' %}" rel="stylesheet">
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" data-auto-replace-svg="nest"></script>
+</head>
+
+<body>
+    <div class="container error">
+        <div class="error-message">
+            <h1>404</h1>
+            <h2>OOPS! This Page Could Not Be Found!</h2>
+            <h3>{{message}}</h3>
+            <form action="{% url 'index' %}">
+                {% csrf_token %}
+                <input class="btn btn-warning" type="submit" value="Back to Home Page">
+            </form>
+        </div>
+    </div>
+</body>
