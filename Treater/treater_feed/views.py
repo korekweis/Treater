@@ -102,6 +102,7 @@ def view_user_profile(request, user_id):
     profileUser = User.objects.get(pk=user_id)
     return render(request, "treater_feed/profile.html", {
         "profileUser": profileUser,
+        "user": profileUser,
         "tweets": profileUser.tweet_user.all().order_by('-date_and_time')
     })
 
@@ -113,7 +114,8 @@ def delete_tweet_feed(request, tweet_id, user_id):
     tweet.delete()
     return render(request, "treater_feed/feed.html", {
         "profileUser": profileUser,
-        "tweets": profileUser.tweet_user.all().order_by('-date_and_time')
+        "user": profileUser,
+        "tweets": Tweet.objects.all().order_by('-date_and_time')
     })
 
 @login_required
