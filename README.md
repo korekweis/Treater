@@ -1,5 +1,5 @@
 # Treater
-#### An application that is something like Twitter that it for restaurants. Used Django for frontend, and SQLite for the database.
+#### An application that is something like Twitter that it for restaurants. Used Django framework, and SQLite for the database.
 
 ## Installing Django
 `python -m pip install Django`
