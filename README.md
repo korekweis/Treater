@@ -1,6 +1,9 @@
 # Treater
 #### An application that is something like Twitter that it for restaurants.
 
+## Installing Django
+`python -m pip install Django`
+
 ## Starting the project
 `django-admin startproject Treater`
 
