@@ -1,12 +1,20 @@
 # Treater
-Something like twitter!! 
+#### An application that is something like Twitter that it for restaurants.
 
-django-admin startproject Treater
-python manage.py startapp treater_feed
+## Starting the project
+`django-admin startproject Treater`
 
-To migrate models: 
-python manage.py makemigrations 
-python manage.py migrate
+`python manage.py startapp treater_feed`
 
-To run: 
-python manage.py runserver
+## Migrating Models
+`python manage.py makemigrations`
+
+`python manage.py migrate`
+
+## Running the application on Machine
+`python manage.py runserver`
+
+## Running on Browser 
+`http://127.0.0.1:8000/Treater/home`
+
+# Treater Features
