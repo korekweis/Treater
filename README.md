@@ -1,6 +1,9 @@
 # Treater
 #### An application that is something like Twitter that it for restaurants.
 
+## Installing Django
+`python -m pip install Django`
+
 ## Starting the project
 `django-admin startproject Treater`
 
@@ -18,3 +21,4 @@
 `http://127.0.0.1:8000/Treater/home`
 
 # Treater Features
+![Home Page](/Treater/Images/Home.png "Test")
