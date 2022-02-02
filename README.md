@@ -21,3 +21,4 @@
 `http://127.0.0.1:8000/Treater/home`
 
 # Treater Features
+![Home Page](/Treater/Images/Home.png "Test")
